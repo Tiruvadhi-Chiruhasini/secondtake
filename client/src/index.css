@@ -1,0 +1,82 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---- Ported from movie-rajyamouli/style.css + login.html (kept visually identical) ---- */
+@layer base {
+  body { font-family: Arial, sans-serif; color: #fff; background-color: #000; line-height: 1.6; }
+  h1, h2, h3 { font-weight: bold; }
+}
+
+@layer components {
+  /* .hero — same Unsplash image + rgba(0,0,0,.6) overlay */
+  .hero { background: #000 url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=2525&auto=format&fit=crop') no-repeat center center/cover; height: 100vh; min-height: 560px; position: relative; }
+  .hero .overlay { background: rgba(0,0,0,0.6); height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; }
+  .hero h1 { font-size: clamp(3.5rem, 12vw, 8rem); color: #f0c040; font-family: Cambria, serif; line-height: 1.1; }
+  .hero h2 { font-size: 1.5rem; margin: 0 10px 20px; font-family: 'Times New Roman', Times, serif; }
+  .hero p { max-width: 600px; margin: 20px auto; font-family: 'Times New Roman', Times, serif; }
+  .Rj { color: #f5f4f3; font-family: Cambria, serif; }
+
+  /* .btn — gold, with the split white wipe on hover */
+  .btn { display: inline-block; padding: 10px 20px; background: #f0c040; color: #000; text-decoration: none; font-weight: bold; border-radius: 5px; position: relative; overflow: hidden; transition: color .3s ease; cursor: pointer; border: 0; }
+  .btn::before, .btn::after { content: ""; position: absolute; width: 0%; height: 100%; top: 0; left: 0; background: rgba(255,255,255,0.3); transition: width .4s ease; z-index: 0; }
+  .btn::after { left: auto; right: 0; }
+  .btn:hover { color: #fff; }
+  .btn:hover::before, .btn:hover::after { width: 50%; }
+  .btn span { position: relative; z-index: 1; }
+  .btn:disabled { opacity: .5; cursor: not-allowed; }
+
+  /* login.html .btn — white + scale + glow */
+  .btn-glow { display: inline-block; padding: 12px 25px; background: #f0c040; color: #000; font-weight: bold; border-radius: 6px; cursor: pointer; border: 0; transition: all .3s ease, transform .2s ease; }
+  .btn-glow:hover { background: #fff; color: #000; transform: scale(1.05); box-shadow: 0 0 15px #f0c040; }
+  .btn-glow:disabled { opacity: .5; cursor: not-allowed; transform: none; }
+
+  /* secondary button (outline version of the gold button) */
+  .btn-ghost { display: inline-block; padding: 8px 16px; border: 1px solid #f0c040; color: #f0c040; background: transparent; font-weight: bold; border-radius: 5px; cursor: pointer; transition: all .3s ease; font-size: .9rem; }
+  .btn-ghost:hover { background: #f0c040; color: #000; }
+  .btn-ghost:disabled { opacity: .5; cursor: not-allowed; }
+
+  /* .paths / .card */
+  .section-dark { padding: 50px 20px; background: #111; text-align: center; }
+  .section-black { padding: 50px 20px; background: #000; text-align: center; }
+  .card { background: #222; padding: 20px; border-radius: 8px; }
+  .card h3 { color: #f0c040; margin-bottom: 10px; }
+
+  /* login.html container + inputs */
+  .auth-bg { font-family: Cambria, serif; background: linear-gradient(135deg, #000 40%, #222 100%); min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px 12px; }
+  .auth-title { color: #f0c040; text-shadow: 0 0 10px rgba(240,192,64,0.8); letter-spacing: 2px; margin-bottom: 20px; text-align: center; }
+  .auth-card { background: rgba(17,17,17,0.95); padding: 40px; border-radius: 12px; text-align: center; width: 380px; max-width: 94vw; box-shadow: 0 0 25px rgba(240,192,64,0.6); animation: fadeIn 1s ease-in-out; }
+  .field { width: 100%; padding: 12px; border: none; border-radius: 6px; background: #222; color: #fff; font-size: 1rem; transition: box-shadow .3s ease; font-family: inherit; }
+  .field:focus { outline: none; box-shadow: 0 0 10px #f0c040; }
+  .field::placeholder { color: #aaa; }
+  .field option { background: #111; color: #fff; }
+  select.field { cursor: pointer; }
+  .field-sm { padding: 8px 10px; font-size: .9rem; }
+  input[type=range] { accent-color: #f0c040; width: 100%; }
+
+  /* ---- Extensions (derived from the dashboard demo video) ---- */
+  .page-enter { animation: fadeIn .6s ease-in-out; }
+  .panel { background: #111; border: 1px solid #2c2c2c; border-radius: 8px; padding: 18px; }
+  .viz-title { font-family: Cambria, serif; font-style: italic; color: #c0b080; font-size: 1.15rem; margin-bottom: 8px; }
+  .page-title { font-family: Cambria, serif; font-style: italic; color: #c0b080; font-size: clamp(1.6rem, 3.4vw, 2.4rem); text-shadow: 0 0 10px rgba(240,192,64,.25); }
+  .kpi { background: #222; border-radius: 8px; padding: 14px 18px; box-shadow: inset 0 0 0 1px #333; }
+  .kpi b { display: block; font-family: Cambria, serif; font-size: 1.9rem; color: #fff; line-height: 1.2; }
+  .kpi small { color: #aaa; font-size: .8rem; }
+  .slicer { background: #1a1a1a; border: 1px solid #444; border-radius: 6px; padding: 10px 12px; }
+  .slicer-item { display: flex; align-items: center; gap: 8px; padding: 3px 4px; cursor: pointer; font-size: .9rem; color: #ddd; width: 100%; text-align: left; background: none; border: 0; }
+  .slicer-item:hover { color: #f0c040; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid #aaa; flex: none; }
+  .slicer-item[aria-checked=true] .dot { background: #f0c040; border-color: #f0c040; box-shadow: 0 0 6px #f0c040; }
+  .navlink { color: #ddd; font-size: .92rem; padding: 4px 2px; border-bottom: 2px solid transparent; transition: all .3s ease; }
+  .navlink:hover { color: #f0c040; }
+  .navlink.active { color: #f0c040; border-bottom-color: #f0c040; }
+  .chip { display: inline-block; font-size: .72rem; font-weight: bold; padding: 2px 9px; border-radius: 999px; letter-spacing: .5px; }
+  .tbl { width: 100%; border-collapse: collapse; font-size: .9rem; }
+  .tbl th { text-align: left; color: #c0b080; font-family: Cambria, serif; font-style: italic; font-weight: normal; padding: 8px; border-bottom: 1px solid #333; }
+  .tbl td { padding: 8px; border-bottom: 1px solid #222; }
+  .scroll-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scroll-thin::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .page-enter, .auth-card { animation: none; } }
